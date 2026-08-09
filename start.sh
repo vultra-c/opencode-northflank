@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 
-# 确保 opencode 在 PATH 中
-export PATH="/root/.local/bin:/usr/local/bin:${PATH}"
-
 mkdir -p /data/opencode
 
 # 在虚拟主机创建数据目录（如果不存在）
@@ -30,4 +27,4 @@ ln -sf /data/opencode ~/.opencode
 ) &
 
 echo "[OpenCode] Starting server..."
-/root/.local/bin/opencode web --hostname 0.0.0.0 --port 4096
+opencode web --hostname 0.0.0.0 --port 4096
