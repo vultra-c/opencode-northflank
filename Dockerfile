@@ -4,8 +4,9 @@ RUN apt-get update && apt-get install -y \
     curl git build-essential python3 ca-certificates lftp \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -fsSL https://opencode.ai/install | bash
-ENV PATH="/root/.local/bin:/usr/local/bin:${PATH}"
+# 安装 opencode，并创建符号链接到 /usr/local/bin（标准 PATH）
+RUN curl -fsSL https://opencode.ai/install | bash && \
+    ln -sf /root/.local/bin/opencode /usr/local/bin/opencode
 
 WORKDIR /app
 COPY start.sh /app/start.sh
